@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite" // 💡 注意：Prisma 7 里面这里绝对不要写 url = ...
+  provider = "postgresql"
 }
 
 model User {
@@ -28,7 +28,7 @@ model Account {
 
 
 
-  
+
   expires_at        Int?
   token_type        String?
   scope             String?
