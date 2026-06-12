@@ -20,24 +20,24 @@ export default function MessageForm({ addMessage }: MessageFormProps) {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="mb-10 p-6 bg-white dark:bg-zinc-900 rounded-lg shadow-sm"
+      className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700/50"
     >
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-1">留言</label>
-        <textarea
-          name="content"
-          required
-          rows={3}
-          className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-md bg-transparent"
-          placeholder="说点什么..."
-        />
+      <textarea
+        name="content"
+        required
+        rows={3}
+        className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none placeholder:text-gray-400"
+        placeholder="说点什么..."
+      />
+      <div className="flex justify-between items-center mt-3">
+        <span className="text-xs text-gray-400">支持 Markdown 语法</span>
+        <button
+          type="submit"
+          className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-sm"
+        >
+          💬 发表留言
+        </button>
       </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-      >
-        提交留言
-      </button>
     </form>
   );
 }

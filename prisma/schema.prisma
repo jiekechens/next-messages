@@ -25,10 +25,6 @@ model Account {
   providerAccountId String
   refresh_token     String?
   access_token      String?
-
-
-
-
   expires_at        Int?
   token_type        String?
   scope             String?
@@ -52,5 +48,6 @@ model Message {
   content   String
   createdAt DateTime @default(now())
   userId    String
+  deleted   Boolean  @default(false)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
