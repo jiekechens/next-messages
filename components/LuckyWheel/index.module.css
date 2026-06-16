@@ -1,0 +1,66 @@
+.wheel-container {
+  position: relative;
+  
+  width: 6.5rem;
+  height: 6.5rem;
+  margin: 0 auto;
+  user-select: none;
+
+ 
+  .bg-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6.5rem;
+    height: 6.5rem;
+    background:url("/images/bg-recl-w.webp") no-repeat
+      center/contain;
+    z-index: 1;
+  }
+
+  .wheel-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6.5rem;
+    height: 6.5rem;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+
+  .spin-button-trigger {
+    position: absolute;
+    width: 3.08rem;
+    height: 4.52rem;
+    top: 30%; 
+    left: 49.5%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    background-image: url("/images/go-and-the-btn.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 4;
+    outline: none;
+
+    .go-btn {
+      font-family: Arial, Arial;
+      font-weight: 900;
+      font-size: 0.2rem;
+      color: #fdffce;
+      line-height: 0.28rem;
+      color: #f8f8d8; /* 文字本身的米黄色 */
+      text-shadow:
+        2px 2px 0 #a82a2a,
+        /* 主阴影：右下偏移，硬边 */ 3px 3px 4px rgba(168, 42, 42, 0.4); /* 可选：加一点柔化，让它更自然 */
+      font-weight: bold;
+      font-size: 0.4rem; /* 按你的实际字号调整 */
+      text-align: center;
+      font-style: normal;
+      padding-top: 2.8rem;
+    }
+  }
+}

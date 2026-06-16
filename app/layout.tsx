@@ -33,6 +33,7 @@ export default function RootLayout({
           <nav className="max-w-4xl mx-auto flex items-center justify-between px-4 h-14">
             {/* 导航内容保持不变 */}
             <Link href="/" className="...">留言板</Link>
+            <Link href="/myProjectHighlights" className="...">项目项目亮点</Link>
             <div className="flex items-center gap-6 text-sm font-medium">
               <Link href="/messages" className="...">浏览留言</Link>
               <a href="https://github.com/jiekechens/next-messages" target="_blank" rel="noopener noreferrer" className="...">
