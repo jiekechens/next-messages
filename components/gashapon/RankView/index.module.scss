@@ -1,0 +1,110 @@
+.big-prize-rank-main {
+  padding: 0.3rem;
+  padding-top: 0.7rem;
+  color: #FFFFFF;
+
+  .rank-scroll-box {
+    height: 4.85rem;
+    overflow-y: scroll;
+    margin-top: 0.1rem;
+
+    .user-rank-top {
+      width: 5.2rem;
+      height: 0.86rem;
+      border-radius: 0.16rem;
+      background: linear-gradient(90deg, #402BF9 0%, #5C0DF8 0%, #672DD5 100%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0.1rem 0;
+
+      .rank-order {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 0.15rem;
+        flex: 1;
+
+        img {
+          width: 0.48rem;
+          height: 0.48rem;
+        }
+      }
+
+      .avatar {
+        flex: 1;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        margin: 0 0.05rem;
+
+        img {
+          width: 0.6rem;
+          height: 0.6rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .info {
+        flex: 6;
+        display: flex;
+        flex-direction: column;
+        margin: 0 0.1rem;
+
+        .name {
+          width: 2rem;
+          font-size: 0.24rem;
+          color: #fff;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        .id {
+          width: 2rem;
+          font-size: 0.2rem;
+          color: #A28DFB;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+
+      .prize-icon {
+        width: 0.4rem;
+        height: 0.4rem;
+      }
+
+      .prize-num {
+        flex: 2;
+        color: #FBDA24;
+        font-size: 0.28rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .user-rank-top:nth-child(1) {
+      margin-top: 0;
+    }
+  }
+
+  .null {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .rank-scroll-box::-webkit-scrollbar {
+    display: none;
+  }
+
+}

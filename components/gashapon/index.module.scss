@@ -1,0 +1,1345 @@
+@use "ani.module.scss";
+
+$second: 0.7s;
+$isInfinite: infinite;
+$speed: linear;
+
+// ✨ Less 的 Mixin 转换为 Scss @mixin
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin fja {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+// 弹窗
+.bounceAni {
+  animation: beBig2 0.4s linear;
+}
+
+// 主
+.gashapon-main-wrap {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  .play-circle {
+    animation: xz 10s linear infinite;
+  }
+
+  .play-icon {
+    color: #fff;
+    position: absolute;
+    right: 3%;
+    top: 15%;
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0.3rem 0.05rem #000;
+
+    img {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+  }
+
+  .load-gif {
+    width: 1rem;
+    height: 1rem;
+    @include abs-center; // ✨ 转换为 Scss 调用方式
+    z-index: 999;
+    background: url('/images/gashapon/loading.gif') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .loading-popUp {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+  }
+
+  .disable-mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+
+  .jackpot-main-wrap {
+    width: 100%;
+    height: 1.28rem;
+    background: linear-gradient(to bottom, #402BF9 0%, #5C0DF8 0%, #007BE1 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .jackpot-rank-main {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0.32rem;
+
+      .jackpot-pic {
+        width: 1.53rem;
+        height: 0.4rem;
+      }
+
+      .jackpot-rank {
+        height: 0.4rem;
+        line-height: 0.4rem;
+        display: flex;
+        background: rgba(34, 26, 169, 0.61);
+        border-radius: 0.2rem;
+        text-align: center;
+        margin-top: 0.11rem;
+
+        .avatar {
+          width: 0.4rem;
+          height: 0.4rem;
+          border-radius: 50%;
+        }
+
+        .desc {
+          font-size: 0.2rem;
+          color: #F5E78B;
+          margin: 0 0.06rem;
+          padding: 0 0.08rem;
+        }
+      }
+    }
+
+    .jackpot-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .jackpot-count-main {
+        display: flex;
+        align-items: center;
+
+        .jackpot-gift {
+          width: 0.96rem;
+          height: 0.96rem;
+          position: relative;
+          margin: 0 0.12rem;
+
+          .bubble {
+            width: 0.96rem;
+            height: 0.96rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url('/images/gashapon/bubble.png') no-repeat;
+            background-size: 100% 100%;
+            z-index: 3;
+          }
+
+          .gift {
+            width: 0.7rem;
+            height: 0.7rem;
+            @include abs-center;
+            transform: translate(-50%, -52%) scale(1);
+            border-radius: 50%;
+            z-index: 2;
+          }
+        }
+
+        .jackpot-count {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .title {
+            color: #F5E78B;
+            font-size: 0.2rem;
+            margin-bottom: 0.1rem;
+            text-align: center;
+          }
+
+          .count {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.4rem;
+            height: 0.44rem;
+            text-align: center;
+            border-radius: 0.11rem;
+            border: 0.01rem solid #43DFFF;
+            background: linear-gradient(0deg, #402BF9 0%, #5C0DF8 0%, #007BE1 100%);
+            letter-spacing: 0.1rem;
+            color: #F5E78B;
+            font-weight: 900;
+            font-size: 0.28rem;
+            font-family: Arial;
+          }
+        }
+      }
+
+      .jackpot-rule-main {
+        width: 0.42rem;
+        height: 0.42rem;
+        background: url('/images/gashapon/question.png') no-repeat;
+        background-size: 100% 100%;
+        margin: 0 0.1rem;
+      }
+
+      .jackpot-close-main {
+        width: 0.5rem;
+        height: 0.5rem;
+        background: url('/images/gashapon/close.png') no-repeat;
+        background-size: 100% 100%;
+        margin: 0 0.2rem;
+      }
+    }
+  }
+
+  .gashapon-content-wrap {
+    width: 100%;
+    height: 9.75rem;
+    background: url('/images/gashapon/bg.png') no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    position: relative;
+
+    .hand {
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      bottom: 0;
+      right: 1rem;
+      background: url('/images/gashapon/hand.png') no-repeat;
+      background-size: 100% 100%;
+      z-index: 5;
+      animation: hand 1s linear infinite alternate;
+    }
+
+    .pool-mode-main {
+      width: 100%;
+      height: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .pool-mode {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 4.3rem;
+        height: 0.78rem;
+        font-size: 0.3rem;
+        font-family: Adobe Heiti Std;
+        background: url('/images/gashapon/pool_bg.png') no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        text-shadow: 0 0 0.1rem #DD7905;
+        color: #fff;
+
+        .pool-txt {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          position: absolute;
+          @include abs-center;
+
+          .low-pool {
+            width: 50%;
+            text-align: center;
+          }
+
+          .hight-pool {
+            width: 50%;
+            text-align: center;
+          }
+        }
+
+        .pool-active {
+          width: 100%;
+          height: 0.79rem;
+          background: url('/images/gashapon/pool_active.png') no-repeat;
+          background-size: 2.21rem 0.79rem;
+          background-position: 0 center;
+          transition: all 0.2s;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+
+    .gashapon-machine {
+      width: 100%;
+      height: 8.54rem;
+      background: url('/images/gashapon/gashapon.png') no-repeat;
+      background-size: 100% 100%;
+      position: relative;
+      z-index: 2;
+
+      .star {
+        width: 100%;
+        height: 100%;
+
+        img {
+          position: absolute;
+          top: 0.8rem;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40%;
+          height: 40%;
+        }
+      }
+
+      .gashapon-rule {
+        width: 1.41rem;
+        height: 0.66rem;
+        background: url('/images/gashapon/rule.png') no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 0.28rem;
+        right: -0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 0.28rem;
+        color: #fff;
+      }
+
+      .gashapon-shop {
+        width: 0.91rem;
+        height: 1.11rem;
+        background: url('/images/gashapon/shop.png') no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 1.2rem;
+        right: 0;
+        text-align: center;
+        color: #fff;
+
+        span {
+          font-size: 0.24rem;
+          display: block;
+          width: 100%;
+          position: absolute;
+          bottom: 0.1rem;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .gashapon-reward {
+        height: 0.5rem;
+        line-height: 0.5rem;
+        font-size: 0.28rem;
+        color: #FFFFFF;
+        position: absolute;
+        bottom: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-shadow: 0 0 0.1rem yellow;
+      }
+
+      .gold-record-box {
+        width: 84%;
+        height: 0.71rem;
+        position: absolute;
+        bottom: 1.95rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .gashapon-record {
+          width: 1.71rem;
+          height: 0.71rem;
+          background: url('/images/gashapon/record.png') no-repeat;
+          background-size: 100% 100%;
+          @include fja;
+          color: #fff;
+          font-size: 0.28rem;
+        }
+
+        .gashapon-gold {
+          width: 2.71rem;
+          height: 0.71rem;
+          background: url('/images/gashapon/gold_bg.png') no-repeat;
+          background-size: 100% 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .gold-main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .gold-box {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              .gold-pic {
+                width: 0.4rem;
+                height: 0.4rem;
+                background: url('/images/gashapon/gold.png') no-repeat;
+                background-size: 100% 100%;
+              }
+
+              .gold-num {
+                width: 1.5rem;
+                font-size: 0.26rem;
+                color: #fff;
+                margin: 0.05rem;
+                font-family: Adobe Heiti Std;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+              }
+            }
+
+            .gold-add {
+              width: 0.38rem;
+              height: 0.38rem;
+              background: url('/images/gashapon/add.png') no-repeat;
+              background-size: 100% 100%;
+            }
+          }
+        }
+      }
+
+      .gashapon-10,
+      .gashapon-50 {
+        width: 1.98rem;
+        height: 0.69rem;
+        background-image: url('/images/gashapon/prize_default.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        @include fja;
+        font-size: 0.28rem;
+        color: #FFFFFF;
+        position: absolute;
+        bottom: 1.5%;
+        left: 33%;
+        text-shadow: 0 0 0.1rem #0061D3;
+        line-height: 0.3rem;
+        display: flex;
+        flex-direction: column;
+
+        span {
+          font-size: 0.19rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .gashapon-10 {
+        bottom: 10.5%;
+      }
+
+      .gashapon-prize-active {
+        background-image: url('/images/gashapon/prize_active.png');
+        text-shadow: 0 0 0.1rem red;
+        animation: beBig1 0.4s linear;
+      }
+
+      .gashapon-egg {
+        width: 1.1rem;
+        height: 1.1rem;
+        position: absolute;
+        bottom: 3.5%;
+        left: 14.2%;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .egg {
+          width: 1.1rem;
+          height: 1.1rem;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          transform: translateY(-2rem);
+        }
+
+        .egg-gold {
+          background-image: url('/images/gashapon/egg.png');
+        }
+
+        .egg-blue {
+          background-image: url('/images/gashapon/egg2.png');
+        }
+
+        .egg-purple {
+          background-image: url('/images/gashapon/egg5.png');
+        }
+
+        .egg-ani {
+          animation: eggFall 1s ease-in-out;
+          animation-fill-mode: forwards;
+        }
+
+        .egg-shake-ani {
+          animation: shake 0.2s 4 ease-in alternate;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      .gashapon-switch {
+        width: 1.08rem;
+        height: 1.08rem;
+        background: url('/images/gashapon/switch.png') no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        bottom: 3.6%;
+        right: 20.5%;
+        border-radius: 50%;
+        animation: heartBeat 1s infinite alternate;
+      }
+
+      .switch-ani {
+        animation: switch 1s 1 ease-in-out alternate;
+      }
+    }
+
+    .gashapon-egg-list {
+      direction: ltr !important;
+      width: 3.8rem;
+      height: 3.8rem;
+      position: absolute;
+      top: 39%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .egg-item01,
+      .egg-item02,
+      .egg-item03,
+      .egg-item04,
+      .egg-item05,
+      .egg-item06,
+      .egg-item07,
+      .egg-item08,
+      .egg-item09,
+      .egg-item10 {
+        width: 1.06rem;
+        height: 1.06rem;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .egg-item01 {
+        position: absolute;
+        bottom: 0.1rem;
+        left: 0.7rem;
+        z-index: 2;
+        transform: rotate(10deg) scale(1.1);
+        background-image: url('/images/gashapon/egg3.png');
+      }
+
+      .egg-item02 {
+        position: absolute;
+        bottom: -0.1rem;
+        left: 1.4rem;
+        z-index: 3;
+        transform: rotate(-10deg) scale(1.1);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item03 {
+        position: absolute;
+        bottom: 0rem;
+        right: 0.5rem;
+        z-index: 4;
+        transform: rotate(0) scale(1.1);
+        background-image: url('/images/gashapon/egg5.png');
+      }
+
+      .egg-item04 {
+        position: absolute;
+        bottom: 0.6rem;
+        left: 0.3rem;
+        z-index: 5;
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item05 {
+        position: absolute;
+        bottom: 0.8rem;
+        left: 1rem;
+        z-index: 2;
+        transform: rotate(0deg) scale(1.05);
+        background-image: url('/images/gashapon/egg2.png');
+      }
+
+      .egg-item06 {
+        position: absolute;
+        bottom: 0.75rem;
+        left: 1.85rem;
+        z-index: 2;
+        transform: rotate(0) scale(1.1);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item07 {
+        position: absolute;
+        bottom: 0.75rem;
+        right: 0;
+        z-index: 3;
+        background-image: url('/images/gashapon/egg2.png');
+      }
+
+      .egg-item08 {
+        position: absolute;
+        bottom: 1.1rem;
+        left: 0.2rem;
+        z-index: 2;
+        transform: rotate(50deg) scale(1);
+        background-image: url('/images/gashapon/egg4.png');
+      }
+
+      .egg-item09 {
+        position: absolute;
+        bottom: 1.4rem;
+        left: 1.1rem;
+        z-index: 1;
+        transform: rotate(80deg) scale(1.2);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item10 {
+        position: absolute;
+        bottom: 1.2rem;
+        left: 2.1rem;
+        z-index: 0;
+        transform: rotate(40deg) scale(1.1);
+        background-image: url('/images/gashapon/egg4.png');
+      }
+
+      .egg-item001,
+      .egg-item002,
+      .egg-item003,
+      .egg-item004,
+      .egg-item005,
+      .egg-item006,
+      .egg-item007,
+      .egg-item008,
+      .egg-item009,
+      .egg-item010 {
+        width: 1.06rem;
+        height: 1.06rem;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .egg-item001 {
+        position: absolute;
+        bottom: 0.1rem;
+        left: 0.7rem;
+        z-index: 2;
+        transform: rotate(30deg) scale(1.1);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item002 {
+        position: absolute;
+        bottom: -0.1rem;
+        left: 1.4rem;
+        z-index: 3;
+        transform: rotate(10deg) scale(1.1);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item003 {
+        position: absolute;
+        bottom: 0rem;
+        right: 0.75rem;
+        z-index: 4;
+        transform: rotate(-30deg) scale(1.15);
+        background-image: url('/images/gashapon/egg5.png');
+      }
+
+      .egg-item004 {
+        position: absolute;
+        bottom: 0.6rem;
+        left: 0.3rem;
+        z-index: 5;
+        transform: rotate(-30deg) scale(1.15);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item005 {
+        position: absolute;
+        bottom: 0.8rem;
+        left: 1rem;
+        z-index: 2;
+        transform: rotate(-50deg) scale(1.05);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item006 {
+        position: absolute;
+        bottom: 0.75rem;
+        left: 1.85rem;
+        z-index: 2;
+        transform: rotate(50deg) scale(1.1);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item007 {
+        position: absolute;
+        bottom: 0.75rem;
+        right: 0;
+        z-index: 3;
+        transform: rotate(40deg) scale(1.2);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item008 {
+        position: absolute;
+        bottom: 1.1rem;
+        left: 0.2rem;
+        z-index: 2;
+        transform: rotate(150deg) scale(1);
+        background-image: url('/images/gashapon/egg2.png');
+      }
+
+      .egg-item009 {
+        position: absolute;
+        bottom: 1.4rem;
+        left: 1.1rem;
+        z-index: 1;
+        transform: rotate(80deg) scale(1.1);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      .egg-item010 {
+        position: absolute;
+        bottom: 1.3rem;
+        left: 2.1rem;
+        z-index: 0;
+        transform: rotate(160deg) scale(1.2);
+        background-image: url('/images/gashapon/egg.png');
+      }
+
+      // ✨ Less 的变量调用 @ 替换成了 Scss 的 $
+      .egg1-ani { animation: move1 $second $isInfinite $speed; animation-delay: 0s; }
+      .egg2-ani { animation: move2 $second $isInfinite $speed; animation-delay: 0.1s; }
+      .egg3-ani { animation: move3 $second $isInfinite $speed; animation-delay: 0.12s; }
+      .egg4-ani { animation: move4 $second $isInfinite $speed; animation-delay: 0.16s; }
+      .egg5-ani { animation: move5 $second $isInfinite $speed; animation-delay: 0.2s; }
+      .egg6-ani { animation: move6 $second $isInfinite $speed; animation-delay: 0.24s; }
+      .egg7-ani { animation: move7 $second $isInfinite $speed; animation-delay: 0.3s; }
+      .egg8-ani { animation: move8 $second $isInfinite $speed; animation-delay: 0.34s; }
+      .egg9-ani { animation: move9 $second $isInfinite $speed; animation-delay: 0.4s; }
+      .egg10-ani { animation: move10 $second $isInfinite $speed; animation-delay: 0.44s; }
+    }
+
+    .egg-fade {
+      animation: fade 0.5s linear;
+    }
+
+    .gashapon-bar {
+      width: 0.57rem;
+      height: 1.07rem;
+      background: url('/images/gashapon/bar.png') no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 32%;
+      right: 9%;
+      z-index: 1;
+      transform: rotate(5deg);
+      transform-origin: 10% 90%;
+    }
+
+    .bar-ani {
+      animation: switch2 1s linear;
+      animation-delay: 1s;
+    }
+  }
+
+  .gashapon-reminder {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 900;
+    width: 5.8rem;
+    height: 5.91rem;
+    background: #4104B0;
+    border: 0.06rem solid #7E5EFD;
+    border-radius: 0.4rem;
+
+    .gashapon-reminder-title {
+      position: absolute;
+      top: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4.18rem;
+      height: 1.73rem;
+      background: url('/images/gashapon/title.png') no-repeat;
+      background-size: 100% 100%;
+      color: #FFFFFF;
+      font-size: 0.29rem;
+      text-align: center;
+      line-height: 2.1rem;
+      text-shadow: 0 0 0.1rem #513DDC;
+    }
+
+    .close {
+      width: 0.56rem;
+      height: 0.56rem;
+      background: url('/images/gashapon/close.png') no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 0;
+      top: -0.35rem;
+    }
+
+    .record-content-main {
+      padding: 0.7rem 0.3rem 0rem 0.3rem;
+
+      .record-tab {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 0.5rem;
+        font-size: 0.2rem;
+        margin-bottom: 0.1rem;
+
+        .record-lottery, .record-exchange {
+          width: 40%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 0.1rem;
+          background-image: url('/images/gashapon/prize_default.png');
+          background-repeat: no-repeat;
+          background-size: 120% 120%;
+          background-position: center;
+        }
+
+        .record-active {
+          background-image: url('/images/gashapon/prize_active.png');
+        }
+      }
+
+      .record-content {
+        height: 4.2rem;
+        box-sizing: border-box;
+        overflow-y: scroll;
+
+        .record-item {
+          display: flex;
+          flex-direction: column;
+          margin-top: 0.2rem;
+
+          .record-time {
+            color: #9280FF;
+            margin: 0.14rem 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .time {
+              font-size: 0.22rem;
+              padding-top: 0.05rem;
+            }
+
+            .modeL, .modeH {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0 0.1rem;
+              font-size: 0.2rem;
+              color: #ddd;
+            }
+
+            .modeH {
+              color: yellow;
+            }
+          }
+
+          .record-table {
+            .re-td, .re-td-big {
+              height: 0.8rem;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              border: 0.015rem solid #7533EC;
+
+              .record-desc, .record-count {
+                flex: 1;
+                text-align: center;
+                padding: 0.1rem 0;
+                font-size: 0.24rem;
+                color: #FFFFFF;
+              }
+
+              .h {
+                width: 0.015rem;
+                height: 100%;
+                background: #7533EC;
+              }
+
+              .record-pic {
+                flex: 1;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                  width: 0.7rem;
+                  height: 0.7rem;
+                }
+              }
+
+              .record-num {
+                flex: 1;
+                text-align: center;
+                color: #FFFFFF;
+                font-size: 0.28rem;
+              }
+
+              .record-prize {
+                flex: 1;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                .circle {
+                  width: 1rem;
+                  height: 1rem;
+                  position: absolute;
+                  @include abs-center;
+                  background: url('/images/gashapon/circle.png') no-repeat;
+                  background-size: 100% 100%;
+                  animation: highLight 10s linear infinite;
+                }
+
+                img {
+                  width: 0.58rem;
+                  height: 0.58rem;
+                  @include abs-center;
+                  z-index: 2;
+                }
+              }
+
+              .record-prize-num {
+                flex: 1;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.24rem;
+                color: #F5E78B;
+                font-weight: bold;
+              }
+            }
+
+            .re-td:nth-child(1) {
+              height: 0.6rem;
+              background: #5512D0;
+              border-radius: 0.15rem 0.15rem 0px 0px;
+              padding: 0;
+            }
+
+            .re-td-big {
+              height: 0.9rem;
+              background: rgba(0, 0, 0, 0.3);
+            }
+
+            .re-td:last-child {
+              border-radius: 0 0 0.15rem 0.15rem;
+            }
+          }
+        }
+
+        .record-item:nth-child(1) {
+          margin-top: 0;
+        }
+
+        .more {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.24rem;
+          text-align: center;
+          color: #fff;
+          padding: 0.2rem 0;
+          padding-bottom: 0;
+
+          img {
+            width: 0.25rem;
+            height: 0.25rem;
+            margin: 0 0.03rem;
+            margin-top: 0.05rem;
+          }
+        }
+
+        .noMore {
+          font-size: 0.2rem;
+          text-align: center;
+          color: #aaa;
+          margin-top: 0.2rem;
+        }
+      }
+
+      .record-content::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .rule-content-main {
+      padding: 0.3rem;
+      padding-top: 0.7rem;
+      font-size: 0.24rem;
+      color: #FFFFFF;
+      line-height: 0.48rem;
+
+      .rule-box {
+        height: 4.8rem;
+        overflow-y: scroll;
+      }
+    }
+
+    .rule-big-prize-main {
+      padding: 0.3rem;
+      padding-top: 0.7rem;
+      font-size: 0.24rem;
+      color: #FFFFFF;
+      line-height: 0.48rem;
+
+      .prize-rule-box {
+        height: 5rem;
+        overflow-y: scroll;
+      }
+    }
+
+    .fragement-content-main {
+      padding: 0.3rem;
+      padding-top: 0.7rem;
+
+      .fra-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url('/images/gashapon/banner.png') no-repeat;
+        background-size: 100% 100%;
+
+        .fra-banner {
+          width: 3.08rem;
+          height: 0.52rem;
+          color: #F5E78B;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0.05rem 0;
+          text-align: center;
+
+          .fra-img {
+            width: 0.41rem;
+            height: 0.41rem;
+            background: url('/images/gashapon/fragment.png') no-repeat;
+            background-size: 100% 100%;
+          }
+
+          .fra-desc {
+            margin: 0 0.1rem;
+            font-size: 0.26rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+              width: 0.3rem;
+              height: 0.3rem;
+            }
+          }
+        }
+
+        .fra-history {
+          width: 1.3rem;
+          height: 0.52rem;
+          background: rgba(0, 0, 0, 0.4);
+          font-size: 0.2rem;
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .fra-content {
+        height: 4rem;
+        margin-top: 0.2rem;
+        overflow-y: scroll;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .fra-item {
+          width: 1.48rem;
+          height: 1.9rem;
+          border-radius: 0.1rem;
+          border: 0.01rem solid #7058F9;
+          background: #5512D0;
+          margin: 0.2rem 0;
+
+          .fra-box {
+            width: 1.48rem;
+            height: 1.48rem;
+            flex: 8;
+            position: relative;
+
+            .bubble {
+              width: 1rem;
+              height: 1rem;
+              background: url('/images/gashapon/bubble.png') no-repeat;
+              background-size: 100% 100%;
+              @include abs-center;
+              z-index: 2;
+              animation: updone 1s linear infinite alternate;
+            }
+
+            .gift {
+              @include abs-center;
+              z-index: 2;
+              animation: updone 1s linear infinite alternate;
+
+              img {
+                width: 0.6rem;
+                height: 0.6rem;
+              }
+            }
+
+            .shadow {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              bottom: 0.08rem;
+              width: 0.8rem;
+              height: 0.22rem;
+              background: #3a0796;
+              border-radius: 50%;
+            }
+          }
+
+          .fra-exchange {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.28rem;
+            color: #F5E78B;
+
+            .fra-pic {
+              width: 0.3rem;
+              height: 0.3rem;
+              background: url('/images/gashapon/fragment.png') no-repeat;
+              background-size: 100% 100%;
+              margin-top: 0.05rem;
+            }
+
+            .fra-num {
+              margin: 0 0.05rem;
+            }
+
+            box-sizing: border-box;
+            width: 1.48rem;
+            height: 0.42rem;
+            flex: 2;
+            background: #4104B0;
+            border-radius: 0 0 0.1rem 0.1rem;
+          }
+        }
+      }
+
+      .fra-content::-webkit-scrollbar {
+        display: none;
+      }
+
+      .fra-reminder {
+        width: 3.5rem;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 0.1rem;
+        @include abs-center;
+        top: 48%;
+        z-index: 901;
+        display: flex;
+        flex-direction: column;
+        border: 0.02rem solid #7E5EFD;
+
+        .count-box {
+          width: 90%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          margin: 0 auto;
+
+          .add, .reduce {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 0.5rem;
+            height: 0.5rem;
+            color: #fff;
+            font-size: 0.3rem;
+          }
+
+          .show {
+            width: 0.5rem;
+            height: 0.5rem;
+            text-align: center;
+          }
+        }
+
+        .fra-rm-pic {
+          width: 100%;
+          height: 2.5rem;
+          position: relative;
+          flex: 9;
+          margin: 0.2rem auto;
+          margin-top: 0.3rem;
+
+          img, .circle {
+            display: block;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin: 0 auto;
+          }
+        }
+
+        .desc {
+          box-sizing: border-box;
+          width: 90%;
+          padding: 0.2rem;
+          text-align: center;
+          color: #fff;
+          font-size: 0.21rem;
+          margin: 0 auto;
+          padding-top: 0;
+        }
+
+        .fra-comfirm {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          text-align: center;
+          width: 100%;
+          background-color: rgb(85, 18, 208);
+          border-radius: 0 0 0.1rem 0.1rem;
+          flex: 2;
+          color: #fff;
+          height: 0.5rem;
+
+          .no, .yes {
+            box-sizing: border-box;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 0.5rem;
+            border-top: 0.01rem solid #7E5EFD;
+            font-size: 0.22rem;
+          }
+
+          .h {
+            width: 0.02rem;
+            height: 0.5rem;
+            background: #7E5EFD;
+          }
+        }
+      }
+    }
+  }
+
+  .big-prize-tip {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    @include abs-center;
+    z-index: 9999;
+
+    .big-prize-pic {
+      border-radius: 50%;
+      @include abs-center;
+
+      .circle {
+        @include abs-center;
+        width: 5rem;
+        height: 5rem;
+        animation: highLight 8s linear infinite;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .prize-img {
+        @include abs-center;
+        width: 2.5rem;
+        height: 2.5rem;
+        z-index: 11;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .big-prize-desc {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 0.7rem;
+      text-shadow: 0 0 0.1rem yellow;
+    }
+  }
+
+  .gashapon-mask {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.64);
+    z-index: 800;
+  }
+}
+
+// 阿语适配
+.gashapon-ar {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.hide {
+  display: none;
+}

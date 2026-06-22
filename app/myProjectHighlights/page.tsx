@@ -5,6 +5,7 @@ import LuckyWheel, {
   type PrizeItem,
 } from "@/components/LuckyWheel";
 
+import Gashapon from "@/components/gashapon";
 const WHEEL_BG = "/images/shanxing.webp";
 const DEFAULT_GOLD_ICON = "/images/gold-web.webp";
 
@@ -87,7 +88,7 @@ export default function LuckyPage() {
 
     </div>
     <div>
-      
+        <Gashapon />
     </div>
     </>
   );
