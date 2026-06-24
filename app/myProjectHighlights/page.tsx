@@ -90,6 +90,7 @@ export default function LuckyPage() {
     <div>
         <Gashapon />
     </div>
+    < div className="pb-10" />
     </>
   );
 }
